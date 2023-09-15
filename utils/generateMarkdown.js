@@ -1,19 +1,37 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  if (!license) return "";
+  if (license.includes(none)) return "";
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  if (license.includes(none)) return "";
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  if (license.includes(none)) return "";
+}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
+function generateMarkdown({
+  title,
+  description,
+  usage,
+  contributing,
+  credits,
+  github,
+  email,
+  license,
+}) {
+  const badge = renderLicenseBadge(license);
+  const licenseURL = renderLicenseLink(license);
+  const licenseBody = renderLicenseSection(license);
+  const githubURL = `https://www.github.com/${github}`;
+
   return `
 # ${title}
 
@@ -53,7 +71,7 @@ ${contributing}
 
 You can reach me:
 
-- on GitHub [${githubName}](${githubURL})
+- on GitHub [${github}](${githubURL})
 - via email: ${email}
 
 ## Credits
