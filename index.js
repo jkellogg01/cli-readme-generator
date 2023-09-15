@@ -42,17 +42,22 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, (err) => {
+    err
+      ? console.error(err)
+      : console.log(`wrote successfully to ${fileName}!`);
+  });
+}
 
 // TODO: Create a function to initialize app
-async function init() {
+async function init(path) {
   const userData = await inquirer.prompt(questions);
   const markdown = generateMarkdown(userData);
 
-  const targetPath = process.argv[2] || "./output/";
-  const filename = "README.md";
-  writeToFile(targetPath + filename, markdown);
+  const targetPath = path || "./output";
+  writeToFile(`${targetPath}/README.md`, markdown);
 }
 
 // Function call to initialize app
-init();
+init(process.argv[2]);
