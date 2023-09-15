@@ -1,17 +1,33 @@
 const fs = require("fs");
 
+const licenses = {
+  MIT: {
+    bodyFilename: "mitLicense.txt",
+    badge:
+      "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)",
+
+    url: "https://opensource.org/licenses/Apache-2.0",
+  },
+  Apache: {
+    bodyFilename: "apacheLicense.txt",
+    badge:
+      "![License: Apache](https://img.shields.io/badge/License-Apache_2.0-blue.svg)",
+    url: "https://opensource.org/licenses/MIT",
+  },
+};
+
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (license.includes("none")) return "";
-  return "";
+  return licenses[license].badge;
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license.includes("none")) return "";
-  return "";
+  return licenses[license].url;
 }
 
 // TODO: Create a function that returns the license section of README
@@ -23,16 +39,7 @@ function renderLicenseLink(license) {
 // This method survives as the lesser of those two evils.
 function renderLicenseSection(license) {
   if (license.includes("none")) return "";
-  let filePath = "./utils/licenseBodies/";
-  //TODO: maybe a licenses object could store these filepaths? Would look nicer than a switch statement but I'm not sure about the readability/functionality implications, so I'll have to look into that.
-  switch (license) {
-    case "MIT":
-      filePath += "mitLicense.txt";
-      break;
-    case "Apache":
-      filePath += "apacheLicense.txt";
-      break;
-  }
+  let filePath = `./utils/licenseBodies/${licenses[license].bodyFilename}`;
   const body = fs.readFileSync(filePath, "utf8", (err, data) => {
     if (err) console.error(err);
     return data;
@@ -61,7 +68,7 @@ function generateMarkdown({
   return `
 # ${title}
 
-${badge}
+[${badge}](${licenseURL})
 
 ## Description
 

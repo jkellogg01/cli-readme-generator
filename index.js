@@ -67,20 +67,20 @@ async function init(path) {
 }
 
 // TEST CASE
-console.log(
-  generateMarkdown({
-    title: "README generator",
-    description: "",
-    installation: "",
-    usage: "",
-    testing: "",
-    contributing: "",
-    credits: "",
-    github: "jkellogg01",
-    email: "kellogg.20.joshua@gmail.com",
-    license: "MIT",
-  })
-);
+// console.log(
+//   generateMarkdown({
+//     title: "README generator",
+//     description: "",
+//     installation: "",
+//     usage: "",
+//     testing: "",
+//     contributing: "",
+//     credits: "",
+//     github: "jkellogg01",
+//     email: "kellogg.20.joshua@gmail.com",
+//     license: "MIT",
+//   })
+// );
 
 // Function call to initialize app
-// init(process.argv[2]);
+init(process.argv[2]);
