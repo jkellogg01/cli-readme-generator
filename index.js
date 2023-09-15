@@ -4,6 +4,7 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 
 // TODO: Create an array of questions for user input
+const licenseChoices = ["MIT", "BSD", "GNU", "none"];
 const questions = [
   {
     type: "input",
@@ -36,7 +37,7 @@ const questions = [
   {
     type: "list",
     name: "license",
-    choices: ["MIT", "none"],
+    choices: licenseChoices,
   },
 ];
 
