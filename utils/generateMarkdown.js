@@ -16,9 +16,14 @@ function renderLicenseLink(license) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
+
+// To be clear, I don't -love- how I did this.
+// It's perscriptive, it has a lot of overhead, and frankly, it looks pretty bad.
+// The only alternative I can think of right now is having huge preformatted strings hard coded in this file.
+// This method survives as the lesser of those two evils.
 function renderLicenseSection(license) {
   if (license.includes("none")) return "";
-  let filePath = "licenseBodies/";
+  let filePath = "./utils/licenseBodies/";
   //TODO: maybe a licenses object could store these filepaths? Would look nicer than a switch statement but I'm not sure about the readability/functionality implications, so I'll have to look into that.
   switch (license) {
     case "MIT":
@@ -28,10 +33,9 @@ function renderLicenseSection(license) {
       filePath += "apacheLicense.txt";
       break;
   }
-  const body = fs.readFile(filePath, (err) => {
-    err
-      ? console.error(err)
-      : console.log("successfully read license body from file");
+  const body = fs.readFileSync(filePath, "utf8", (err, data) => {
+    if (err) console.error(err);
+    return data;
   });
   return body;
 }
