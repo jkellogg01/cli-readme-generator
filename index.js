@@ -4,7 +4,6 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 
 // TODO: Create an array of questions for user input
-const licenseChoices = ["MIT", "BSD", "GNU", "none"];
 const questions = [
   {
     type: "input",
@@ -16,7 +15,15 @@ const questions = [
   },
   {
     type: "input",
+    name: "installation",
+  },
+  {
+    type: "input",
     name: "usage",
+  },
+  {
+    type: "input",
+    name: "testing",
   },
   {
     type: "input",
@@ -37,7 +44,7 @@ const questions = [
   {
     type: "list",
     name: "license",
-    choices: licenseChoices,
+    choices: ["Apache", "MIT", "none"],
   },
 ];
 
@@ -59,5 +66,21 @@ async function init(path) {
   writeToFile(`${targetPath}/README.md`, markdown);
 }
 
+// TEST CASE
+console.log(
+  generateMarkdown({
+    title: "README generator",
+    description: "",
+    installation: "",
+    usage: "",
+    testing: "",
+    contributing: "",
+    credits: "",
+    github: "jkellogg01",
+    email: "kellogg.20.joshua@gmail.com",
+    license: "MIT",
+  })
+);
+
 // Function call to initialize app
-init(process.argv[2]);
+// init(process.argv[2]);
