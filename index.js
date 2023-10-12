@@ -58,12 +58,11 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-async function init(path) {
+async function init(path = "./output") {
   const userData = await inquirer.prompt(questions);
   const markdown = generateMarkdown(userData);
 
-  const targetPath = path || "./output";
-  writeToFile(`${targetPath}/README.md`, markdown);
+  writeToFile(`${path}/README.md`, markdown);
 }
 
 // TEST CASE
