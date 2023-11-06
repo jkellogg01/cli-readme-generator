@@ -8,42 +8,53 @@ const questions = [
   {
     type: "input",
     name: "title",
+    message: "Enter the title of your project:",
   },
   {
     type: "input",
     name: "description",
+    message: "Provide a description of your project:",
   },
   {
     type: "input",
     name: "installation",
+    message: "Provide information on how to install your project:",
   },
   {
     type: "input",
     name: "usage",
+    message: "Provide information on how to use your project:",
   },
   {
     type: "input",
     name: "testing",
+    message:
+      "Provide information on how to test that your project is working as intended:",
   },
   {
     type: "input",
     name: "contributing",
+    message: "Provide information on how to contribute to this project:",
   },
   {
     type: "input",
     name: "credits",
+    message: "Provide information on who worked on this project:",
   },
   {
     type: "input",
     name: "github",
+    message: "Enter your github username:",
   },
   {
     type: "input",
     name: "email",
+    message: "Enter your email address:",
   },
   {
     type: "list",
     name: "license",
+    message: "Select a license:",
     choices: ["Apache", "MIT", "none"],
   },
 ];
