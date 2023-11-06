@@ -6,6 +6,8 @@
 
 A CLI app for generating a high-quality README for software development projects
 
+[Demonstration Video](https://youtu.be/gZAb_Vqneuk)
+
 ## Table of Contents
 
 [Installation](#installation)
